@@ -1,0 +1,27 @@
+<%topics.forEach((x, num)=>{%>
+    <%if(x.isSubmitted){%>
+    <article class="entry">
+        <div class="entry-img">
+            <img src="/<%=x.dayPhoto%>" alt="Photo-of-the-day" class="img-fluid" width="1200" height="600">
+        </div>
+        <h2 class="entry-title">
+            <a href="/blog-single/<%=x.title%>"><%=x.titleNormal%></a>
+        </h2>
+        <div class="entry-meta">
+            <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a><%=x.lastName%>, <%=x.firstName%></a></li>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a><time><%=x.day%></time></a></li>
+            </ul>
+        </div>
+        <div class="entry-content">
+            <p>
+                <%=x.content.substring(0,300) + "..."%>
+            </p>
+
+            <div class="read-more">
+                <a href="/blog-single/<%=x.title%>">Read More</a>
+            </div>
+        </div>
+    </article>
+    <%}%>
+<%})%>

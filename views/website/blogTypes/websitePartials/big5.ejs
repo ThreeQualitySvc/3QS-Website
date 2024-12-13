@@ -1,0 +1,10 @@
+<h3 class="sidebar-title">Recent Posts</h3>
+<div class="sidebar-item recent-posts">
+    <%big5.forEach(a => {%>
+        <div class="post-item clearfix">
+            <img src="/<%= a.dayPhoto %>" alt="">
+            <h4><a href="/blog-single/<%= a.title %>"><%= a.titleNormal %></a></h4>
+            <time datetime="2020-01-01"><%= a.day %></time>
+        </div>
+    <%})%>
+</div>

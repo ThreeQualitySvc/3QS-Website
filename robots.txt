@@ -1,0 +1,16 @@
+User-agent: *
+Disallow: /public
+Disallow: /write
+Disallow: /compose
+Disallow: /edit/:id
+Disallow: /delete/:id
+Disallow: /:id/submit
+Disallow: /:id/remove
+Disallow: /:id/comment
+Disallow: /post/:postName
+
+
+
+
+
+

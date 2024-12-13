@@ -1,0 +1,32 @@
+<%- include('../partials/header') %>
+    <section class="breadcrumbs">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Blog</h2>
+                <ol>
+                    <li><a href="/">Home</a></li>
+                    <li>Project Management</li>
+                </ol>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="blog">
+        <div class="container" data-aos="fade-up">
+            <div class="row">
+                <div class="col-lg-8 entries">
+                    <%- include('./websitePartials/article') %>
+                    <%- include('./websitePartials/pagination') %>
+                </div>
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        <%- include('./websitePartials/searchBar') %>
+                        <%- include('./websitePartials/categories') %>
+                        <%- include('./websitePartials/big5') %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<%- include('../partials/footer') %>
+</body>
+</html>

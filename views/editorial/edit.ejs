@@ -1,0 +1,147 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>formwizard_v6</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="snowflake">
+
+    <!-- material design iconic font -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- style css -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+<div class="wrapper">
+    <form id="blog-form" method="post" action="/edit/<%=postToEdit._id%>" enctype="multipart/form-data">
+        <div id="wizard">
+            <!-- section 1 -->
+            <h4></h4>
+            <section>
+                <div class="form-header">
+                    <div class="avartar">
+                        <a href="#">
+                            <img id="frame" class="review" src="/<%=postToEdit.profilePhoto%>" alt="Profile Photo">
+                        </a>
+                        <div class="avartar-picker">
+                            <input type="file" name="thisPhoto" accept="image/* " value="<%=postToEdit.profilePhoto%>" id="file-1" class="inputfile" onchange="preview()"/>
+                            <label for="file-1">
+                                <i class="zmdi zmdi-camera"></i>
+                                <span style="padding-left: 10px;">choose picture</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-holder active">
+                            <input type="text" name="fname" placeholder="First Name" class="form-control" autocomplete="off" value="<%=postToEdit.firstName%>">
+                        </div>
+                        <div class="form-holder">
+                            <input type="text" name="lname" placeholder="Last Name" class="form-control" autocomplete="off" value="<%=postToEdit.lastName%>">
+                        </div>
+                        <div class="form-holder active">
+                            <input type="email" name="email" placeholder="Email Address" class="form-control" autocomplete="off" value="<%=postToEdit.email%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-holder email-path">
+                    <input type="text" name="title" placeholder="What is the blog's title" class="form-control" autocomplete="off" value="<%=postToEdit.title%>">
+                </div>
+                <div class="form-holder">
+                    <textarea type="text" name="mood" placeholder="What are you feeling today?" class="" autocomplete="off" ><%=postToEdit.mood%></textarea>
+                </div>
+            </section>
+
+            <!-- SECTION 2 -->
+            <h4></h4>
+            <section>
+                <div class="grid">
+                    <div class="row">
+                        <a id="code" href="#" class="grid-item" style="background-image: url('/images/programming-bg.jpg');">
+                            <div class="inner" id="coder">
+                                <input type="checkbox" name="tags" class="tags" id="pic-1" <% if (postToEdit.tags.includes("Cyber Security")) { %>checked<% } %> value="Cyber Security"/>
+                                <img src="/images/programming.png" alt="">
+                                <span>Cyber Security</span>
+                            </div>
+                        </a>
+                        <a id="science" href="#" class="grid-item" style="background-image: url('/images/research-bg.jpg');">
+                            <div class="inner" id="scientist">
+                                <input type="checkbox" name="tags" class="tags" id="pic-2" <% if (postToEdit.tags.includes("Data Science")) { %>checked<% } %> value="Data Science"/>
+                                <img src="/images/research.png" alt="">
+                                <span>Data Science</span>
+                            </div>
+                        </a>
+                        <a id="teach" href="#" class="grid-item" style="background-image: url('/images/teacher-bg.jpg');">
+                            <div class="inner" id="teacher">
+                                <input type="checkbox" name="tags" class="tags" id="pic-3" <% if (postToEdit.tags.includes("Training")) { %>checked<% } %> value="Training"/>
+                                <img src="/images/teacher.png" alt="">
+                                <span>Training</span>
+                            </div>
+
+                        </a>
+                    </div>
+                    <div class="row">
+                        <a id="tour" href="#" class="grid-item" style="background-image: url('/images/tour-guide-bg.jpg');">
+                            <div class="inner" id="governor">
+                                <input type="checkbox" name="tags" class="tags" id="pic-4"  <% if (postToEdit.tags.includes("Governance")) { %>checked<% } %> value="Governance"/>
+                                <img src="/images/tour-guide.png" alt="">
+                                <span>Governance</span>
+                            </div>
+                        </a>
+                        <a id="business" href="#" class="grid-item" style="background-image: url('/images/business-bg.jpg');">
+                            <div class="inner" id="money">
+                                <input type="checkbox" name="tags" class="tags" id="pic-5" <% if (postToEdit.tags.includes("Project Management")) { %>checked<% } %> value="Project Management"/>
+                                <img src="/images/business.png" alt="">
+                                <span>Project Management</span>
+                            </div>
+                        </a>
+                        <a id="art" href="#" class="grid-item" style="background-image: url('/images/artist-bg.jpg');">
+                            <div class="inner" id="artist">
+                                <input type="checkbox" name="tags" class="tags" id="pic-6" <% if (postToEdit.tags.includes("Business & Finance")) { %>checked<% } %> value="Business & Finance"/>
+                                <img src="/images/artist.png" alt="">
+                                <span>Business & Finance</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3 -->
+            <h4></h4>
+            <section>
+                <h2 style="padding-bottom: 2%; margin-top: -40px;">What are you talking about today?</h2>
+                <div class="form-group">
+                    <div class="form-holder">
+                        <textarea type="text" placeholder="Type Here" name="content" class="blogStuff" onchange="endview()" ><%=postToEdit.content%></textarea>
+                    </div>
+                </div>
+
+                <div class="form-row" style="display:flex;justify-content: center; margin-top: -40px;">
+                    <div class="avartar-picker">
+                        <input type="file" name="thisPhoto" accept="image/* " id="file-2" class="inputfile" onchange="endview()"/>
+                        <label for="file-2">
+                            <i class="zmdi zmdi-camera"></i>
+                            <span>upload photo of the day</span>
+                        </label>
+                    </div>
+
+                </div>
+                <div style="display:flex;justify-content: center;padding-top: 3%;">
+                    <a href="#">
+                        <img id="picDay" src="" alt="">
+                    </a>
+                </div>
+            </section>
+        </div>
+    </form>
+</div>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+
+<!-- JQUERY STEP -->
+<script src="/assets/js/jquery.steps.js"></script>
+
+<script src="/assets/js/main.js"></script>
+
+</body>
+</html>

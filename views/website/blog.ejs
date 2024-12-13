@@ -1,0 +1,39 @@
+<%- include('partials/header') %>
+  <%- include('partials/alerts') %>
+
+  <section class="breadcrumbs">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2>Blog</h2>
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li>Blog</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="blog" role="tabpanel" aria-labelledby="pills-blog-tab" class="blog">
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-8 entries">
+          <%- include('blogTypes/websitePartials/article') %>
+          <%- include('blogTypes/websitePartials/pagination') %>
+        </div>
+        <div class="col-lg-4">
+          <div class="sidebar">
+            <%- include('blogTypes/websitePartials/searchBar') %>
+            <%- include('blogTypes/websitePartials/categories') %>
+            <%- include('blogTypes/websitePartials/big5') %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<div id="wave">
+  <img src="/assets/images/backgrounds/bg6.png"/>
+</div>
+<%- include('partials/footer') %>
+</body>
+</html>
